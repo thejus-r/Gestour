@@ -21,6 +21,14 @@ const StorySchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    recommendedMovies: {
+        type: String,
+        required: false
+    },
+    genreWith: {
+        type: String,
+        required: false
     }
 
 })

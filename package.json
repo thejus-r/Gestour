@@ -1,13 +1,13 @@
 {
-  "name": "storybook",
+  "name": "gestour",
   "version": "1.0.0",
-  "description": "project based on https://www.youtube.com/watch?v=SBvmnHTQIPY&t=234s",
+  "description": "project developed by Thejus R",
   "main": "app.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node app",
     "dev": "cross-env NODE_ENV=development nodemon app"
   },
-  "author": "Austin Salil M.",
+  "author": "Thejus R",
   "license": "ISC",
   "dependencies": {
     "connect-mongo": "^3.2.0",
