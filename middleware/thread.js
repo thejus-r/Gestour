@@ -1,42 +1,20 @@
-let analysisData
+// module.exports.doAnalysis = async function(text) {
 
-const spawn = require('child_process').spawn;
+//   const spawn = require('child_process').spawn;
 
-text = 'Happy'
+//   const ls = spawn('python', ['emotionAnalyser.py',text]);
 
-async function analysisText() {
-  const ls = spawn('python', ['emotionAnalyser.py',text]);
+//   ls.stdout.on('data', (data) => {
 
-  ls.stdout.on('data', (data) => {
-  var showData = `${data}`
-  analysisData = showData
-  showData = JSON.parse(showData)
-  console.log(showData["genre"])
+//     var showData = `${data}`
+//     var analysisData = showData
 
+//     showData = JSON.parse(showData)
+//     console.log("from thread.js ", showData)
 
-});
+//     return showData
 
-}
+//     }
+//   );
 
-function analysisText() {
-  return new Promise(resolve => {
-    const ls = spawn('python', ['emotionAnalyser.py',text]);
-
-  ls.stdout.on('data', (data) => {
-  var showData = `${data}`
-  analysisData = showData
-  //showData = JSON.parse(showData)
-  //console.log(showData["genre"])
-  resolve(analysisData)
-  });
-  });
-}
-
-async function callAnalysis() {
-  const result = await analysisText();
-  return result
-}
-
-callAnalysis()
-
-module.exports = callAnalysis();
+// }

@@ -22,11 +22,11 @@ const StorySchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    recommendedMovies: {
+    recommendedMoviesList: {
         type: String,
         required: false
     },
-    genreWith: {
+    emotionAnalysis: {
         type: String,
         required: false
     }

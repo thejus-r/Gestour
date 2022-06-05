@@ -3,6 +3,23 @@ const router = express.Router()
 const { ensureAuth } = require("../middleware/auth")
 const Story = require("../models/Story")
 const { populate } = require("../models/Story")
+// const  doAnalysis  = require("../middleware/thread")
+
+
+
+// const spawn = require('child_process').spawn;
+
+// async function doAnalysis(text) {
+//   const ls = spawn('python', ['emotionAnalyser.py',text]);
+//   ls.stdout.on('data', (data) => {
+//     var showData = `${data}`
+//     var analysisData = showData
+//     showData = JSON.parse(showData)
+//     console.log("from another thread ", showData)
+//     return showData
+//   });
+// }
+
 
 //@desc show add page
 //@route GET /stories/add
@@ -17,8 +34,9 @@ router.get("/add", ensureAuth, (req, res) => {
 router.post("/", ensureAuth, async (req, res) => {
     try {
         req.body.user = req.user.id
+        req.body.emotionAnalysis = doAnalysis(req.body.body)
+        console.log(req.body.emotionAnalysis)
         await Story.create(req.body)
-        //console.log(analysisData)
         res.redirect("/dashboard")
     } catch (err) {
         console.error(err)
