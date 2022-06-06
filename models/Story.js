@@ -1,36 +1,39 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const StorySchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    body: {
-        type: String,
-        required: true
-    },
-    status: {
-        type: String,
-        default: "public",
-        enum: ["public", "private"]
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    recommendedMoviesList: {
-        type: String,
-        required: false
-    },
-    emotionAnalysis: {
-        type: String,
-        required: false
-    }
+  title: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  body: {
+    type: String,
+    required: true,
+  },
+  status: {
+    type: String,
+    default: "public",
+    enum: ["public", "private"],
+  },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  recommendedGener: {
+    type: String,
+    required: false,
+  },
+  recommendedMoviesList: {
+    type: Array,
+    required: false,
+  },
+  emotionAnalysis: {
+    type: String,
+    required: false,
+  },
+});
 
-})
-
-module.exports = mongoose.model("Story", StorySchema)
+module.exports = mongoose.model("Story", StorySchema);
