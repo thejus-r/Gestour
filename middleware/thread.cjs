@@ -1,16 +1,17 @@
-module.exports.doAnalysis = async function (text) {
+module.exports = async (text) => {
   const spawn = require("child_process").spawn;
 
   const ls = spawn("python", ["emotionAnalyser.py", text]);
-  console.log("reached here");
+
+  var showData;
 
   ls.stdout.on("data", (data) => {
-    var showData = `${data}`;
-    var analysisData = showData;
+    showData = `${data}`;
 
     showData = JSON.parse(showData);
     console.log("from thread.js ", showData);
 
     return showData;
   });
+  return Promise.resolve(showData);
 };

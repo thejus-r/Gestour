@@ -34,11 +34,10 @@ const getResult = async (gener) => {
         .map((value) => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value);
-      result = result.slice(0, 4);
-      //console.log(result);
+      result = result.slice(0, 5);
       return result;
     });
-  console.log(data);
+  return data;
 };
 
-console.log(getResult("Comedy"));
+getResult("Comedy").then(console.log);

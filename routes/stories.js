@@ -3,7 +3,7 @@ const router = express.Router();
 const { ensureAuth } = require("../middleware/auth");
 const Story = require("../models/Story");
 const { populate } = require("../models/Story");
-//const doAnalysis = require("../middleware/thread.cjs");
+const getGener = require("../middleware/thread.cjs");
 
 //@desc show add page
 //@route GET /stories/add
@@ -18,6 +18,7 @@ router.get("/add", ensureAuth, (req, res) => {
 router.post("/", ensureAuth, async (req, res) => {
   try {
     req.body.user = req.user.id;
+    console.log(getGener(req.body.body));
     await Story.create(req.body);
     res.redirect("/dashboard");
   } catch (err) {
