@@ -3,7 +3,8 @@ const router = express.Router();
 const { ensureAuth } = require("../middleware/auth");
 const Story = require("../models/Story");
 const { populate } = require("../models/Story");
-const getGener = require("../middleware/thread.cjs");
+const runTextAnalysis = require("../middleware/thread.cjs");
+const getFiveMovies = require("../middleware/api.cjs");
 
 //@desc show add page
 //@route GET /stories/add
@@ -18,7 +19,18 @@ router.get("/add", ensureAuth, (req, res) => {
 router.post("/", ensureAuth, async (req, res) => {
   try {
     req.body.user = req.user.id;
-    console.log(getGener(req.body.body));
+    var result = await runTextAnalysis(req.body.body);
+    result = JSON.parse(result["result"][0]);
+    var emotionAnalysis = {
+      happy: result["Happy"],
+      angry: result["Angry"],
+      surprise: result["Surprise"],
+      sad: result["Sad"],
+      fear: result["Fear"],
+    };
+    req.body.recommendedGenre = result["genre"];
+    req.body.emotionAnalysis = emotionAnalysis;
+    req.body.recommendedMoviesList = await getFiveMovies(result["genre"]);
     await Story.create(req.body);
     res.redirect("/dashboard");
   } catch (err) {
