@@ -54,7 +54,7 @@ router.get("/:id", ensureAuth, async (req, res) => {
     if (!story) {
       return res.render("error/404");
     }
-
+    //var scripts = [{ script: "../public/js/emotionChart.js" }];
     res.render("stories/show", {
       story,
     });

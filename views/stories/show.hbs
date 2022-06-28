@@ -1,12 +1,3 @@
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"
-></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
-></script>
 <div class="col s12">
   <div class="row s8">
     <h3>{{story.title}}</h3>
@@ -23,22 +14,23 @@
     <div class="col card">
       <div class="card-content">
         {{#each story.recommendedMoviesList}}
-          <div class="col">
-            <div class="card poster-image">
-              <div class="card-image">
-                <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" />
-                <span class="card-title">{{title}}</span>
+          <a href="https://www.themoviedb.org/movie/{{id}}">
+            <div class="col">
+              <div class="card poster-image">
+                <div class="card-image">
+                  <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" />
+                  <span class="card-title">{{title}}</span>
+                </div>
               </div>
-              {{!-- <div class="card-content">
-              <p>{{overview}}</p>
-            </div> --}}
             </div>
-          </div>
+          </a>
         {{/each}}
       </div>
     </div>
   </div>
   <div class="row s8">
     <h3>Emotion Analysis</h3>
+    <canvas id="emoChart" width="600" height="350"></canvas>
+    <script src={{scripts}}></script>
   </div>
 </div>
