@@ -8,10 +8,10 @@
       </div>
     </div>
   </div>
-  <div class="row s8">
+  <div class="row s12">
     <h3>Recommended Movies</h3>
     <blockquote>Suggested Genre : {{story.recommendedGenre}}</blockquote>
-    <div class="col card">
+    <div class="col card halign-wrapper">
       <div class="card-content">
         {{#each story.recommendedMoviesList}}
           <a href="https://www.themoviedb.org/movie/{{id}}">
@@ -28,9 +28,29 @@
       </div>
     </div>
   </div>
-  <div class="row s8">
+  <div class="row">
     <h3>Emotion Analysis</h3>
-    <canvas id="emoChart" width="600" height="350"></canvas>
-    <script src={{scripts}}></script>
+    <ul class="collection col s4">
+      <li class="collection-item">Happy<span
+          class="badge"
+          data-badge-caption=" "
+        >{{story.emotionAnalysis.happy}}</span></li>
+      <li class="collection-item">Sad<span
+          class="badge"
+          data-badge-caption=" "
+        >{{story.emotionAnalysis.sad}}</span></li>
+      <li class="collection-item">Fear<span
+          class="badge"
+          data-badge-caption=" "
+        >{{story.emotionAnalysis.fear}}</span></li>
+      <li class="collection-item">Surprise<span
+          class="badge"
+          data-badge-caption=" "
+        >{{story.emotionAnalysis.surprise}}</span></li>
+      <li class="collection-item">Angry<span
+          class="badge"
+          data-badge-caption=" "
+        >{{story.emotionAnalysis.angry}}</span></li>
+    </ul>
   </div>
 </div>
