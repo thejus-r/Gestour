@@ -1,31 +1,44 @@
-<div class="row">
-    <div class="col s12 m8">
-        <h3>{{story.title}}
-            <small>{{{editIcon story.user user story._id false}}}</small>
-        </h3>
-        <div class="card card-story">
-            <div class="card-content">
-                <span class="card-title">{{formatDate date 'dddd, MMMM Do YYYY, h:mm:ss a'}}</span>
-                {{{story.body}}}
-            </div>
-        </div>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"
+></script>
+<div class="col s12">
+  <div class="row s8">
+    <h3>{{story.title}}</h3>
+    <blockquote>{{formatDate date "dddd, MMMM Do YYYY, h:mm a"}}</blockquote>
+    <div class="col s12 m8 card">
+      <div class="card-content">
+        {{{story.body}}}
+      </div>
     </div>
-    <div class="col m4">
-        <div class="card center-align">
-            <div class="card-content">
-                <span class="card-title">{{story.user.displayName}}</span>
-                <img src="{{story.user.image}}" class="circle responsive-img img-tiny">
+  </div>
+  <div class="row s8">
+    <h3>Recommended Movies</h3>
+    <blockquote>Suggested Genre : {{story.recommendedGenre}}</blockquote>
+    <div class="col card">
+      <div class="card-content">
+        {{#each story.recommendedMoviesList}}
+          <div class="col">
+            <div class="card poster-image">
+              <div class="card-image">
+                <img src="https://image.tmdb.org/t/p/w500{{poster_path}}" />
+                <span class="card-title">{{title}}</span>
+              </div>
+              {{!-- <div class="card-content">
+              <p>{{overview}}</p>
+            </div> --}}
             </div>
-            <div class="card-action">
-                <a href="/stories/user/{{story.user._id}}">more from {{story.user.firstName}}</a>
-            </div>
-        </div>
+          </div>
+        {{/each}}
+      </div>
     </div>
-    <div class="col s12 m4">
-        <div class="card center-align">
-            <div class="card-content">
-                <span class="card-title">Recommended Movies</span>
-            </div>
-        </div>
-    </div>
+  </div>
+  <div class="row s8">
+    <h3>Emotion Analysis</h3>
+  </div>
 </div>

@@ -31,6 +31,11 @@ router.post("/", ensureAuth, async (req, res) => {
     req.body.recommendedGenre = result["genre"];
     req.body.emotionAnalysis = emotionAnalysis;
     req.body.recommendedMoviesList = await getFiveMovies(result["genre"]);
+    console.log(
+      "Recommended Movie List of Genre : ",
+      req.body.recommendedGenre
+    );
+    console.log(req.body.recommendedMoviesList);
     await Story.create(req.body);
     res.redirect("/dashboard");
   } catch (err) {

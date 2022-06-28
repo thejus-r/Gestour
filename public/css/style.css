@@ -15,5 +15,13 @@ p {
     margin-right: 10px;
 }
 .img-small{
-    width: 180px;
+    width: 64px;
+}
+
+.blank-height{
+    height: 100px;
+}
+
+.poster-image{
+    width: 200px;
 }
